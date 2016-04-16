@@ -32,3 +32,21 @@ index 5c21675..86ce879 100755
                    'sources': [
                      '<(shared_generated_dir)/ffmpeg.def',
                    ],
+diff --git a/chromium/scripts/build_ffmpeg.py b/chromium/scripts/build_ffmpeg.py
+index 20a8a07..85146f0 100755
+--- a/chromium/scripts/build_ffmpeg.py
++++ b/chromium/scripts/build_ffmpeg.py
+@@ -531,9 +531,10 @@ def main(argv):
+ 
+   # Google Chrome & ChromeOS specific configuration.
+   configure_flags['Chrome'].extend([
+-      '--enable-decoder=aac,h264,mp3',
+-      '--enable-demuxer=aac,mp3,mov',
+-      '--enable-parser=aac,h264,mpegaudio',
++      # Full support for all commonly used media codecs
++      '--enable-decoder=aac,ac3,dca,flac,h264,hevc,mp3,mpeg4,mpegvideo,msmpeg4v1,msmpeg4v2,msmpeg4v3',
++      '--enable-demuxer=aac,avi,dts,dtshd,flac,mov,mp3,mp4,mpegts,mpegvideo',
++      '--enable-parser=aac,ac3,dca,flac,h263,h264,hvec,mp3,mpeg4video,mpegaudio',
+   ])
+ 
+   # ChromiumOS specific configuration.
