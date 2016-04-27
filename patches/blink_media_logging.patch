@@ -1,0 +1,22 @@
+diff --git a/third_party/WebKit/Source/modules/mediasource/MediaSource.cpp b/third_party/WebKit/Source/modules/mediasource/MediaSource.cpp
+index 0243901..3ce07cf 100644
+--- a/third_party/WebKit/Source/modules/mediasource/MediaSource.cpp
++++ b/third_party/WebKit/Source/modules/mediasource/MediaSource.cpp
+@@ -47,6 +47,7 @@
+ #include "public/platform/WebMediaSource.h"
+ #include "public/platform/WebSourceBuffer.h"
+ #include "wtf/text/CString.h"
++#include "base/logging.h"
+ 
+ using blink::WebMediaSource;
+ using blink::WebSourceBuffer;
+@@ -232,6 +233,9 @@ bool MediaSource::isUpdating() const
+ 
+ bool MediaSource::isTypeSupported(const String& type)
+ {
++    VLOG(1) << "isTypeSupported";
++    VLOG(1) << "isTypeSupported " << type.ascii().data();
++
+     // Section 2.2 isTypeSupported() method steps.
+     // https://dvcs.w3.org/hg/html-media/raw-file/tip/media-source/media-source.html#widl-MediaSource-isTypeSupported-boolean-DOMString-type
+     // 1. If type is an empty string, then return false.
